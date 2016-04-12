@@ -1,6 +1,7 @@
 class joint(object):
     
     def __init__(self,train_df,discretize,num_bins):
+        """the  creation  of  entire ,, matrix'' of  the  joint distro  will be  only for  toy  datasets"""
         self.train_df=train_df#sets  ds
         self.num_bins=num_bins#number  of  categories for  discretization
         self.n_col=train_df.shape([1])+1
