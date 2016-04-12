@@ -31,6 +31,13 @@ class joint(object):
     def make_joint_function(self):
         if self.n_rows>4:
             print("creating df")
+            #TO DO - return  some data structure
+class create_joint_probs(object):
+    def __init__(self,train_df,structure_from_joint):
+        print("making  joint probs")
+        """for every  element   in big  ,,matrix'' like structure   must  make  it  the prob with some kind  of pattern
+        matching"""
+        
             
             
             
