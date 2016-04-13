@@ -1,13 +1,12 @@
 class joint(object):
     
-    def __init__(self,train_df,discretize,num_bins):
-        """the  creation  of  entire ,, matrix'' of  the  joint distro  will be  only for  toy  datasets"""
+    def __init__(self,train_df,discretize):
         self.train_df=train_df#sets  ds
-        self.num_bins=num_bins#number  of  categories for  discretization
-        self.n_col=train_df.shape([1])+1
-        self.n_rows=0
+ 
+        self.n_col=train_df.shape[1]+1
+        self.n_rows=train_df.shape[0]
         self.discretize=discretize#boolean
-        self.categories=[[] for  cat in  range(train_df.shapee[1])]#list of  lists where in each list are feature cat
+        self.categories=[[] for  cat in  range(train_df.shape[1])]#list of  lists where in each list are feature cat
     def discretize(self):
         if self.discretize==True:
             print("Discretizing...")
@@ -19,7 +18,8 @@ class joint(object):
     def set_categories(self):
         if self.discretize==False:
             print("getting  categories")
-            #FILL   IN   CATEGORIES  - TO DO 
+            self.categories=[[np.unique(self.train_df[:,col])] for col in range(self.train_df.shape[1])]
+         
         else:
             self.discretize()
             print("getting  categories ")
@@ -33,14 +33,17 @@ class joint(object):
         if self.n_rows>4:
             print("creating df")
             #TO DO - return  some data structure
-class create_joint_probs(object):
-    def __init__(self,train_df,structure_from_joint):
-        print("making  joint probs")
-        """for every  element   in big  ,,matrix'' like structure   must  make  it  the prob with some kind  of pattern
-        matching"""
+            """ignore   for now   creation   from  real   file, must add  computing things"""""
+ 
         
             
-            
+data=pd.read_csv("....toytable.csv")
+data=data.drop(['Prob'],axis=1)
+data=np.array(data)
+j=joint(data,False)
+j.set_categories()
+j.categories
+
             
             
             
