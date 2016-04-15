@@ -1,21 +1,25 @@
 class conditional_probs(object):
     def __init__(self,data):
-        self.data=np.array(data)
+        self.data=np.array(data)#ads toy  data table which shuld  be np.array
         self.cats=[{} for  col  in  range(self.data.shape[1]-1)]
+        """ in cats  are storing  conditionals for   each row .It is  a list with  empty dictionaries for each feature"""
     def categories_dict(self):
         #makes a list of dictionaris  where  in  each dict  in added  categories  for  a particular columns
         for column in  range(self.data.shape[1]-1):
             self.cats[column]={elem:0 for elem in np.unique(self.data[:,column])}
+            """for  each  feature  adds in the corresponding dict from the list  the categories  and zero"""
+            """Latter  the zero  will be replaced with   normalized  of the  reduced"""
     def conditioning(self):
         #reducing- get  reduces distribution
-        for  i  in  range(len(self.cats)):
-            for elem in self.cats[i]:
+        for  i  in  range(len(self.cats)):#for  each  dictionary(corresponding to  feature)
+            for elem in self.cats[i]:#for  each categorie in that dict
                 reduced=self.data[self.data[:,i]==elem,self.data.shape[1]-1]
-                self.cats[i][elem]=reduced/sum(reduced)
+                #gets the reduced  probs basically subseting on   categorie and  gets  the   columns  with  prob
+                self.cats[i][elem]=reduced/sum(reduced)#normalization to make it prob  distribution
         #normalization to make it  prob
     def margins(self,I,D):
         #P(i,d)=d
-        #
+        #TO DO 
         ok=True
         
 data=pd.read_csv(" /toytable.csv")
@@ -23,9 +27,9 @@ data=pd.read_csv(" /toytable.csv")
 data=np.array(data)
 c=conditional_probs(data)
  
-c.categories_dict()
+c.categories_dict()#  makes empty list  of  dicts
 #c.cats brings [{'i0': 0, 'i1': 0}, {'d0': 0, 'd1': 0}, {'g1': 0, 'g2': 0, 'g3': 0}]
-c.conditioning()
+c.conditioning() #conditioning 
 c.cats
 #[{'i0': array([0.20999999999999996, 0.27999999999999997, 0.20999999999999996,
 #         0.015, 0.07499999999999998, 0.20999999999999996], dtype=object),
