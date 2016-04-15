@@ -1,3 +1,10 @@
+###############THIS  IS  TRASH DONT  READ  THIS #############
+###############THIS  IS  TRASH DONT  READ  THIS #############
+###############THIS  IS  TRASH DONT  READ  THIS #############
+
+
+
+
 class joint(object):
     
     def __init__(self,train_df,discretize):
